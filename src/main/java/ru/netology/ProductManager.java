@@ -1,7 +1,7 @@
 package ru.netology;
 
 public class ProductManager {
-    ProductRepository repository;
+    private ProductRepository repository;
 
     public ProductManager(ProductRepository repository) {
         this.repository = repository;
@@ -29,8 +29,6 @@ public class ProductManager {
     }
 
     public boolean matches(Product product, String search) {
-
         return product.getName().contains(search);
     }
-
 }

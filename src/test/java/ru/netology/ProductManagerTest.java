@@ -22,32 +22,50 @@ class ProductManagerTest {
     }
     @Test
     public void shouldGetAll() {
-        Product[] expected = new Product[]{first, second, third, fourth};
+        Product[] expected = {first, second, third, fourth};
         Product[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldFindBookByName() {
-        Product[] expected = new Product[]{first};
+        Product[] expected = {first};
         Product[] actual = manager.searchBy("Книга 1");
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldFindSmartphoneByName() {
-        Product[] expected = new Product[]{third};
+        Product[] expected = {third};
         Product[] actual = manager.searchBy("Смартфон 1");
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldFindSmartphoneByName2() {
-        Product[] expected = new Product[]{fourth};
+        Product[] expected = {fourth};
         Product[] actual = manager.searchBy("Смартфон 2");
         assertArrayEquals(expected, actual);
     }
+    @Test
+    public void shouldFindSeveralBooks() {
+        Product[] expected = {first, second};
+        Product[] actual = manager.searchBy("Книга");
+        assertArrayEquals(expected, actual);
+    }
 
+    @Test
+    public void shouldFindSeveralSmartphones() {
+        Product[] expected = {third, fourth};
+        Product[] actual = manager.searchBy("Смартфон");
+        assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void shouldFindNothing() {
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Книга 3");
+        assertArrayEquals(expected, actual);
+    }
 
 }
 
